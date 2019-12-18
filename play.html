@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>play</title>
+		<link rel="stylesheet" type="text/css" href="css/video-js.min.css">
+		<script src="js/video.min.js"></script>
+		<script src="js/jquery-3.4.1.js"></script>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#example-video{
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				margin:-300px 0 0 -500px;
+				width: 1000px;
+				height: 600px;
+			}
+			button{
+				outline: none;
+			}
+		</style>
+		<script type="text/javascript">
+			$(function(){
+				var url = location.href;
+				var subURL = url.substr(url.indexOf("=")+1,url.length)
+				$("#example-video source").attr("src", subURL);
+				var player = videojs('example-video', {
+					"poster": "",
+					"controls": "true"
+				}, function() {
+					// 播放
+					this.on('play', function() {
+					});
+						
+					//暂停
+					this.on('pause', function() {
+					});
+						
+					// 结束
+					this.on('ended', function() {
+					})
+						
+				});
+			});
+		</script>
+	</head>
+
+	<body>
+		<section id="videoPlayer">
+			<video id="example-video" class="video-js vjs-default-skin vjs-big-play-centered" autoplay preload="metadata">
+				<source src="" type="video/mp4">
+			</video>
+		</section>
+	</body>
+</html>
